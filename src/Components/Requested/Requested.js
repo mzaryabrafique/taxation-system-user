@@ -56,7 +56,7 @@ function Requested() {
           <tbody>
             <tr>
               <td>{owner}</td>
-              <td style={{ color: 'red' }}>{status}</td>
+              <td style={status ? { color: 'red' } : { color: 'green' }}>{status}</td>
             </tr>
           </tbody>
         </Table>
