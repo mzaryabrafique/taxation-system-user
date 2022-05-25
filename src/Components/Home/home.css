@@ -1,0 +1,50 @@
+.header {
+    height: 91.5vh;
+    /* background :linear-gradient( rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5)),url('../../../public/images/What-is-Business-Finance.jpg'); */
+    background-repeat: no-repeat;
+    background-size: auto, cover;
+}
+.img img {
+    width: 80%;
+}
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.top {
+    color: rgb(0, 0, 0);
+    background-color: rgb(251, 251, 251);
+}
+.back {
+    color: #fff;
+    background-color: rgb(47, 101, 155);
+}
+.about input {
+    width: 100%;
+    height: 45px;
+}
+.about input::placeholder {
+    font-weight: 500;
+    font-size: 1.5em;
+}
+.textarea textarea::placeholder {
+    font-weight: 500;
+    font-size: 1.5em;
+}
+.textarea textarea {
+    width: 100%;
+}
+.button button {
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: rgb(47, 101, 155);
+    background-color: #fff;
+    border: 1px solid rgb(47, 101, 155);
+}
+.button button:hover {
+    color: #fff;
+    background-color: rgb(47, 101, 155);
+    border: 1px solid rgb(47, 101, 155);
+}

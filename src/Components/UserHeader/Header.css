@@ -1,0 +1,13 @@
+.Nav{
+background-color: rgb(105, 121, 141);
+}
+.active{
+    border-bottom: 1px solid #fff;
+}
+.nav-link{
+padding: unset;
+
+}
+.nav-item{
+    padding-inline: 4px;
+}

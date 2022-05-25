@@ -1,0 +1,72 @@
+.bg {
+  background-color: rgb(69, 68, 68);
+}
+#button-addon1 {
+  color: #ffc371;
+}
+
+i {
+  color: #ffc371;
+}
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.form-control.shadow-0:focus {
+  box-shadow: none;
+}
+.col--1 ul li{
+    color: #fff;
+    font-size: 2rem;
+}
+.col--1 h1{
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 400;
+}
+.col--1 h3{
+    color: #fff;
+    font-weight: bold;
+}
+.col--2 ul li{
+    color: rgb(212, 212, 212);
+    font-size: 1rem;
+    padding-bottom: 7px;
+border-bottom: 1px solid grey;
+}
+
+.col--3 ul li{
+    color: rgb(212, 212, 212);
+    font-size: 1rem;
+    padding-bottom: 7px;
+border-bottom: 1px solid grey;
+}
+
+.col--4 h6{
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+.col--4 h1{
+    color: #fff;
+    font-size: 1.8rem;
+}
+.icon{
+    border-radius: 50%;
+        margin-inline: 10px;
+    width: 40px;
+    height: 40px;
+        background-color: #fff;
+}
+.boorder{
+   
+    font-size: 1.6rem;
+    color: rgb(63, 63, 63);
+}
+.footer a{
+  color:unset;
+  text-decoration:unset;
+}

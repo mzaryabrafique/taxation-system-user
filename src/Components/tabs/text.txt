@@ -1,0 +1,50 @@
+    firstName:formData.firstName
+    ,lastName:formData.lastName
+    ,emailAddress:formData.emailAddress
+    ,phoneNumber:formData.phoneNumber
+    ,CNIC:formData.CNIC
+    ,DateofBirth:formData.DateofBirth
+    ,Occupation:formData.Occupation
+    ,City:formData.City
+    ,Address:formData.Address
+
+
+    ,Salary:formData.Salary
+    ,Rent:formData.Rent
+    ,Business:formData.Business
+    ,Commission:formData.Commission
+    ,Agriculture:formData.Agriculture
+    ,FreeLancing:formData.FreeLancing
+    ,Other:formData.Other
+
+
+    ,TranscationType:formData.TranscationType
+    ,SelectBank:formData.SelectBank
+    ,AccountNo:formData.AccountNo
+    ,TaxDeductionAccoutBank:formData.TaxDeductionAccoutBank
+    ,TypeofActivity:formData.TypeofActivity
+    ,TypeVehicle:formData.TypeVehicle
+    ,VehicleReg:formData.VehicleReg
+    ,TaxDeductionAmountVehicle:formData.TaxDeductionAmountVehicle
+    ,SelectUtlity:formData.SelectUtlity
+    ,SelectProvider:formData.SelectProvider
+    ,CRNo:formData.CRNo
+    ,TaxDeductionAmountUtility:formData.TaxDeductionAmountUtility
+
+    ,Reconcilation:formData.Reconcilation
+
+    ,TypeOfproperty:formData.TypeOfproperty
+    ,AddressProperty:formData.AddressProperty
+    ,AmountProperty:formData.AmountProperty
+
+   ,VehicleTYpe:formData. VehicleTYpe
+    ,RegNo:formData.RegNo
+    ,Amount:formData.Amount
+
+    ,SelectBank5:formData.SelectBank5
+    ,AccountNo5:formData.AccountNo5
+    ,Amount5:formData.Amount5
+
+    ,CashAmount5:formData.CashAmount5
+
+    ,ExpenseAccountNo:formData.ExpenseAccountNo
