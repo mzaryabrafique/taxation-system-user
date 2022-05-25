@@ -8,35 +8,33 @@ const BigNumber = require('bignumber.js');
 
 function Requested() {
   const defaultData = { IncomeTaxyear: "", MonthlyIncome: "" };
-  const [formData, setForm] = useForm(defaultData);
-  const { IncomeTaxyear, MonthlyIncome } = formData;
+  const [status, setStatus] = useState("");
+  const [owner, setOwner] = useState("");
 
 
   async function getRequestDetails() {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     const accounts = await provider.send("eth_requestAccounts", []);
 
+    console.log(accounts[0]);
+
     const deployedNetwork = contract.networks[5777];
     const taxContract = new ethers.Contract(deployedNetwork.address, contract.abi, provider);
 
     const taxID = await taxContract.getFilerId(accounts[0]);
-    console.log("Tax Id", taxID);
+    const taxFilerID = new BigNumber(taxID._hex).s
+    console.log("Tax id", taxFilerID);
+
+    const taxDetail = await taxContract.getFiler(taxFilerID);
+    console.log("Tax Owner", taxDetail[0]);
+    setOwner(taxDetail[0].toString())
+
+    const taxRemDetail = await taxContract.getFilerRemainingData(taxFilerID);
+    console.log("Tax Status", taxRemDetail[6]);
+    setStatus(taxRemDetail[6].toString())
   }
 
   useEffect(() => {
-    async function getRequestDetails() {
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const accounts = await provider.send("eth_requestAccounts", []);
-
-      console.log(accounts[0]);
-
-      const deployedNetwork = contract.networks[5777];
-      const taxContract = new ethers.Contract(deployedNetwork.address, contract.abi, provider);
-
-      const taxID = await taxContract.getFilerId(accounts[0]);
-      console.log("Tax Id", new BigNumber(taxID._hex).s);
-    }
-
     getRequestDetails()
   }, [])
 
@@ -57,13 +55,13 @@ function Requested() {
           </thead>
           <tbody>
             <tr>
-              <td>Mark</td>
-              <td>Otto</td>
+              <td>{owner}</td>
+              <td style={{ color: 'red' }}>{status}</td>
             </tr>
           </tbody>
         </Table>
       </div>
-    </div>
+    </div >
   );
 }
 
