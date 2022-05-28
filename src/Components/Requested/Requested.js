@@ -7,7 +7,6 @@ import { ethers } from "ethers";
 const BigNumber = require('bignumber.js');
 
 function Requested() {
-  const defaultData = { IncomeTaxyear: "", MonthlyIncome: "" };
   const [status, setStatus] = useState("");
   const [owner, setOwner] = useState("");
 
@@ -21,15 +20,18 @@ function Requested() {
     const deployedNetwork = contract.networks[5777];
     const taxContract = new ethers.Contract(deployedNetwork.address, contract.abi, provider);
 
-    const taxID = await taxContract.getFilerId(accounts[0]);
-    const taxFilerID = new BigNumber(taxID._hex).s
-    console.log("Tax id", taxFilerID);
+    // let array = [2];
+    const lengthls = await taxContract._filersIds();
+    let arrlength = new BigNumber(lengthls._hex).s;
+    console.log("length", new BigNumber(lengthls._hex).s);
+    const list = await taxContract["userList"](arrlength);
+    console.log("userList", list);
 
-    const taxDetail = await taxContract.getFiler(taxFilerID);
+    const taxDetail = await taxContract.getFiler(accounts[0]);
     console.log("Tax Owner", taxDetail[0]);
     setOwner(taxDetail[0].toString())
 
-    const taxRemDetail = await taxContract.getFilerRemainingData(taxFilerID);
+    const taxRemDetail = await taxContract.getFilerRemainingData(accounts[0]);
     console.log("Tax Status", taxRemDetail[6]);
     setStatus(taxRemDetail[6].toString())
   }

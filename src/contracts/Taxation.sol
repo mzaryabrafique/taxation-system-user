@@ -9,6 +9,8 @@ contract Taxation {
 
     address public adminMain;
 
+    address[] public userList;
+
     constructor() {
         adminMain = msg.sender;
     }
@@ -35,7 +37,7 @@ contract Taxation {
         bool isVerified;
     }
 
-    mapping(uint256 => Befiler) befiler;
+    mapping(address => Befiler) befiler;
 
     struct Checker {
         address owner;
@@ -64,41 +66,31 @@ contract Taxation {
         checker[msg.sender].owner = msg.sender;
         checker[msg.sender].isApplied = true;
 
-        befiler[newFilerId].filerID = newFilerId;
-        befiler[newFilerId].owner = msg.sender;
-        befiler[newFilerId].salary = _salary;
-        befiler[newFilerId].business = _business;
-        befiler[newFilerId].agriculture = _agriculture;
-        befiler[newFilerId].freelace = _freelance;
-        befiler[newFilerId].bankAccountNo = _bankAccountNo;
-        befiler[newFilerId].vehicalName = _vehicalName;
-        befiler[newFilerId].vehicalMarketValue = _vehicalMarketValue;
-        befiler[newFilerId].vehicalRegNo = _vehicalRegNo;
-        befiler[newFilerId].property = _property;
-        befiler[newFilerId].cash = _cash;
-        befiler[newFilerId].isVerified = false;
+        befiler[msg.sender].filerID = newFilerId;
+        befiler[msg.sender].owner = msg.sender;
+        befiler[msg.sender].salary = _salary;
+        befiler[msg.sender].business = _business;
+        befiler[msg.sender].agriculture = _agriculture;
+        befiler[msg.sender].freelace = _freelance;
+        befiler[msg.sender].bankAccountNo = _bankAccountNo;
+        befiler[msg.sender].vehicalName = _vehicalName;
+        befiler[msg.sender].vehicalMarketValue = _vehicalMarketValue;
+        befiler[msg.sender].vehicalRegNo = _vehicalRegNo;
+        befiler[msg.sender].property = _property;
+        befiler[msg.sender].cash = _cash;
+        befiler[msg.sender].isVerified = false;
+
+        userList.push(msg.sender);
     }
 
     // admin verify the filer
-    function verifyFiler(uint256 filerId) public adminOnly {
-        require(befiler[filerId].isVerified != true);
-        befiler[filerId].isVerified = true;
-    }
-
-    // get the filer id of the user
-    function getFilerId(address _owner) public view returns (uint256) {
-        uint256 id = 0;
-        for (uint256 i = 1; i <= _filersIds.current(); i++) {
-            if (befiler[i].owner == _owner) {
-                id = i;
-                break;
-            }
-        }
-        return id;
+    function verifyFiler(address _owner) public adminOnly {
+        require(befiler[_owner].isVerified != true);
+        befiler[_owner].isVerified = true;
     }
 
     // get the filer details by filer id
-    function getFiler(uint256 filerId)
+    function getFiler(address _owner)
         public
         view
         returns (
@@ -111,17 +103,17 @@ contract Taxation {
         )
     {
         return (
-            befiler[filerId].owner,
-            befiler[filerId].salary,
-            befiler[filerId].business,
-            befiler[filerId].agriculture,
-            befiler[filerId].freelace,
-            befiler[filerId].bankAccountNo
+            befiler[_owner].owner,
+            befiler[_owner].salary,
+            befiler[_owner].business,
+            befiler[_owner].agriculture,
+            befiler[_owner].freelace,
+            befiler[_owner].bankAccountNo
         );
     }
 
     // get the filer remaining details by filer id
-    function getFilerRemainingData(uint256 filerId)
+    function getFilerRemainingData(address _owner)
         public
         view
         returns (
@@ -135,13 +127,13 @@ contract Taxation {
         )
     {
         return (
-            befiler[filerId].vehicalName,
-            befiler[filerId].vehicalMarketValue,
-            befiler[filerId].vehicalDocsHash,
-            befiler[filerId].vehicalRegNo,
-            befiler[filerId].property,
-            befiler[filerId].cash,
-            befiler[filerId].isVerified
+            befiler[_owner].vehicalName,
+            befiler[_owner].vehicalMarketValue,
+            befiler[_owner].vehicalDocsHash,
+            befiler[_owner].vehicalRegNo,
+            befiler[_owner].property,
+            befiler[_owner].cash,
+            befiler[_owner].isVerified
         );
     }
 

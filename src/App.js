@@ -42,17 +42,50 @@ class App extends React.Component {
           )}
 
           <Routes>
+
             <Route path="/" element={<Home />} />
-            <Route path="/user-list" element={<UsersList />} />
-            <Route path="/user-requests" element={<UserRequests />} />
 
-            <Route path="/befiler" element={<Main />} />
-            <Route path="/requested" element={<Requested />} />
+            {this.state.isUser ? (
+              <Route path="/befiler" element={<Main />} />
+            ) : this.state.isAdmin ? (
+              <Route path="/user-list" element={<UsersList />} />
+            ) : (
+              <Route path="/" element={<Home />} />
+            )}
 
-            <Route path="/tax" element={<Tax />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/contectus" element={<Home />} />
-            <Route path="/oonnectwithmetamask" element={<Home />} />
+
+            {this.state.isUser ? (
+              <Route path="/requested" element={<Requested />} />
+            ) : this.state.isAdmin ? (
+              <Route path="/user-requests" element={<UserRequests />} />
+            ) : (
+              <Route path="/" element={<Home />} />
+            )}
+
+            {this.state.isUser ? (
+              <Route path="/tax" element={<Tax />} />
+            ) : this.state.isAdmin ? (
+              <Route path="/user-requests" element={<UserRequests />} />
+            ) : (
+              <Route path="/" element={<Home />} />
+            )}
+
+            {this.state.isUser ? (
+              <Route path="/profile" element={<Profile />} />
+            ) : this.state.isAdmin ? (
+              <Route path="/user-list" element={<UsersList />} />
+            ) : (
+              <Route path="/" element={<Home />} />
+            )}
+
+            {this.state.isUser ? (
+              <Route path="/contectus" element={<Home />} />
+            ) : this.state.isAdmin ? (
+              <Route path="/user-list" element={<UsersList />} />
+            ) : (
+              <Route path="/" element={<Home />} />
+            )}
+
           </Routes>
           <Footer />
         </div>
