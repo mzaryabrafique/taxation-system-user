@@ -83,6 +83,10 @@ contract Taxation {
         userList.push(msg.sender);
     }
 
+    function getUserListLength() public view returns (uint256) {
+        return userList.length;
+    }
+
     // admin verify the filer
     function verifyFiler(address _owner) public adminOnly {
         require(befiler[_owner].isVerified != true);
