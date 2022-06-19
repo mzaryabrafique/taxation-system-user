@@ -24,8 +24,6 @@ function Requested() {
     const lengthls = await taxContract._filersIds();
     let arrlength = new BigNumber(lengthls._hex).s;
     console.log("length", new BigNumber(lengthls._hex).s);
-    const list = await taxContract["userList"](arrlength);
-    console.log("userList", list);
 
     const taxDetail = await taxContract.getFiler(accounts[0]);
     console.log("Tax Owner", taxDetail[0]);
@@ -58,7 +56,7 @@ function Requested() {
           <tbody>
             <tr>
               <td>{owner}</td>
-              <td style={status ? { color: 'red' } : { color: 'green' }}>{status}</td>
+              <td style={status == true ? { color: 'green' } : { color: 'red' }}>{status}</td>
             </tr>
           </tbody>
         </Table>
